@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     loadMore(i) {
-      console.log('i',i);
       this.featuredList[i].size += FEATURED_ITEM_SIZE;
     },
   },

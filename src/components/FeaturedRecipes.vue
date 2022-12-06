@@ -42,7 +42,7 @@ export default {
     };
   },
   created() {
-    console.log('trst');
+    console.log('trst213123giut');
     window.document.title = `Open Drinks - Featured`;
     this.featuredList = recipes.getFeaturedRecipes();
   },

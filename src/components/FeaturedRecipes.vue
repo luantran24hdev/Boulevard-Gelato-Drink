@@ -42,7 +42,6 @@ export default {
     };
   },
   created() {
-    console.log('FEATURED_ITEM_SIZE',FEATURED_ITEM_SIZE);
     window.document.title = `Open Drinks - Featured`;
     this.featuredList = recipes.getFeaturedRecipes();
   },

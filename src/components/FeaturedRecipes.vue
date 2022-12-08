@@ -3,7 +3,6 @@
     <div v-for="(feature, i) in featuredList" v-bind:key="i">
       <h2>{{ feature.title }}</h2>
       <p>{{ feature.description }}</p>
-      <p>debug</p>
       <b-card-group deck>
         <RecipeTile
           v-for="(item, j) in feature.items.slice(0, feature.size)"

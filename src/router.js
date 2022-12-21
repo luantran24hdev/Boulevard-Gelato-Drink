@@ -58,6 +58,16 @@ export default new Router({
       component: () => import('./views/Favorites.vue'),
     },
     {
+      path: '/dashboard/view',
+      name: 'dashboard',
+      component: () => import('./views/Dashboard/views.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/Auth/Login.vue'),
+    },
+    {
       path: '*',
       name: '404',
       component: () => import('./views/PageNotFound.vue'),

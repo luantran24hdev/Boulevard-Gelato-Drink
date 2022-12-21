@@ -1,9 +1,9 @@
 <template lang="">
   <b-container class="main d-flex align-items-center justify-content-center">
-    <div class="col-10">
+    <div class="col-12 ">
       <b-container fluid>
         <!-- User Interface controls -->
-        <b-row>
+        <b-row class="col-12">
           <b-col lg="6" class="my-1">
             <b-form-group
               label="Sort"
@@ -105,7 +105,58 @@
               </b-form-checkbox-group>
             </b-form-group>
           </b-col>
+        </b-row>
 
+        <!-- Main table element -->
+        <b-card>
+          <b-table
+            :items="items"
+            :fields="fields"
+            :current-page="currentPage"
+            :per-page="perPage"
+            :filter="filter"
+            :filter-included-fields="filterOn"
+            :sort-by.sync="sortBy"
+            :sort-desc.sync="sortDesc"
+            :sort-direction="sortDirection"
+            stacked="md"
+            show-empty
+            small
+            @filtered="onFiltered"
+          >
+            <template #cell(name)="row">
+              {{ row.value.first }} {{ row.value.last }}
+            </template>
+
+            <template #cell(actions)="row">
+              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                Info modal
+              </b-button>
+              <b-button size="sm" @click="row.toggleDetails">
+                {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+              </b-button>
+            </template>
+
+            <template #row-details="row">
+              <b-card>
+                <ul>
+                  <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                </ul>
+              </b-card>
+            </template>
+          </b-table>
+        </b-card>
+        <div class="d-flex align-items-center justify-content-space-between">
+          <b-col sm="7" md="6" class="my-1">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="totalRows"
+              :per-page="perPage"
+              align="fill"
+              size="sm"
+              class="my-0"
+            ></b-pagination>
+          </b-col>
           <b-col sm="5" md="6" class="my-1">
             <b-form-group
               label="Per page"
@@ -125,56 +176,7 @@
               ></b-form-select>
             </b-form-group>
           </b-col>
-
-          <b-col sm="7" md="6" class="my-1">
-            <b-pagination
-              v-model="currentPage"
-              :total-rows="totalRows"
-              :per-page="perPage"
-              align="fill"
-              size="sm"
-              class="my-0"
-            ></b-pagination>
-          </b-col>
-        </b-row>
-
-        <!-- Main table element -->
-        <b-table
-          :items="items"
-          :fields="fields"
-          :current-page="currentPage"
-          :per-page="perPage"
-          :filter="filter"
-          :filter-included-fields="filterOn"
-          :sort-by.sync="sortBy"
-          :sort-desc.sync="sortDesc"
-          :sort-direction="sortDirection"
-          stacked="md"
-          show-empty
-          small
-          @filtered="onFiltered"
-        >
-          <template #cell(name)="row">
-            {{ row.value.first }} {{ row.value.last }}
-          </template>
-
-          <template #cell(actions)="row">
-            <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-              Info modal
-            </b-button>
-            <b-button size="sm" @click="row.toggleDetails">
-              {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
-            </b-button>
-          </template>
-
-          <template #row-details="row">
-            <b-card>
-              <ul>
-                <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
-              </ul>
-            </b-card>
-          </template>
-        </b-table>
+        </div>
 
         <!-- Info modal -->
         <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">

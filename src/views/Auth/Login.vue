@@ -92,8 +92,8 @@ export default {
       if (this.$v.form.$anyError) {
         return;
       }
-
-      console.log('Form submitted!');
+      // eslint-disable-next-line no-alert
+      alert('Form submitted!');
     },
   },
 };

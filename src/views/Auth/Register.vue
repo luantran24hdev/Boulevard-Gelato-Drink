@@ -96,8 +96,8 @@ export default {
       if (this.$v.form.$anyError) {
         return;
       }
-
-      console.log('Create new account success!');
+      // eslint-disable-next-line no-alert
+      alert('Create new account success!');
     },
     backLogin() {
       this.$router.push('/login');

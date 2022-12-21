@@ -68,6 +68,11 @@ export default new Router({
       component: () => import('./views/Auth/Login.vue'),
     },
     {
+      path: '/register',
+      name: 'register',
+      component: () => import('./views/Auth/Register.vue'),
+    },
+    {
       path: '*',
       name: '404',
       component: () => import('./views/PageNotFound.vue'),

@@ -11,6 +11,7 @@
               v-model="$v.form.email.$model"
               :state="validateState('email')"
               aria-describedby="input-1-live-feedback"
+              autocomplete="off"
             ></b-form-input>
             <b-form-invalid-feedback id="input-1-live-feedback"
               >This is a required field and must be at least 5 characters.</b-form-invalid-feedback
@@ -24,6 +25,7 @@
               v-model="$v.form.password.$model"
               :state="validateState('password')"
               aria-describedby="input-2-live-feedback"
+              autocomplete="off"
             ></b-form-input>
             <b-form-invalid-feedback id="input-2-live-feedback"
               >This is a required field and must be at least 5 characters.</b-form-invalid-feedback
@@ -32,6 +34,9 @@
           <div class="mt-4">
             <b-button type="submit" variant="primary">Submit</b-button>
             <b-button class="ml-2" @click="resetForm()">Cancel</b-button>
+            <b-button class="ml-2" variant="info" @click="newAccount()"
+              >Create new account</b-button
+            >
           </div>
         </b-form>
       </div>
@@ -78,6 +83,9 @@ export default {
       this.$nextTick(() => {
         this.$v.$reset();
       });
+    },
+    newAccount() {
+      this.$router.push('/register');
     },
     onSubmit() {
       this.$v.form.$touch();

@@ -6,13 +6,13 @@
         <h1 class="logo">
           <router-link to="/">
             <img alt="Logo" src="./assets/logo.png" width="50" />
-            Open Drinks
+            Bouleconstd Gelato {{ isRenderHeader }}
           </router-link>
         </h1>
-        <theme-handler class="mt-3 ml-auto mr-4"></theme-handler>
+        <!-- <theme-handler class="mt-3 ml-auto mr-4"></theme-handler> -->
       </div>
 
-      <b-nav tabs align="center">
+      <b-nav tabs align="center" v-if="isRenderHeader">
         <b-nav-item to="/">Featured</b-nav-item>
         <b-nav-item to="/random" v-if="!isMobile">Random</b-nav-item>
         <b-nav-item to="/explore">Explore</b-nav-item>
@@ -23,7 +23,7 @@
     </div>
     <router-view />
 
-    <footer class="container mt-4 text-center">
+    <footer class="container mt-4 text-center" v-if="isRenderFooter">
       <hr />
       <a href="https://www.netlify.com">
         <img src="https://www.netlify.com/img/global/badges/netlify-light.svg" alt="Netlify" />
@@ -34,20 +34,31 @@
 
 <script>
 import GitHubCorner from '@/components/GitHubCorner.vue';
-import ThemeHandler from '@/components/ThemeHandler.vue';
+// import ThemeHandler from '@/components/ThemeHandler.vue';
 
 export default {
   name: 'App',
   components: {
     GitHubCorner,
-    ThemeHandler,
+    // ThemeHandler,
   },
-
   computed: {
     isMobile() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent,
       );
+    },
+    isRenderHeader() {
+      const arrRouter = ['login', 'register'];
+      const routerName = this.$route.name;
+      if (arrRouter.indexOf(routerName) !== -1) return false;
+      return true;
+    },
+    isRenderFooter() {
+      const arrRouter = ['login', 'register', 'dashboard/view'];
+      const routerName = this.$route.name;
+      if (arrRouter.indexOf(routerName) !== -1) return false;
+      return true;
     },
   },
 };

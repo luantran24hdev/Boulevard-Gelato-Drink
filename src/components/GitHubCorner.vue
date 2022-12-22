@@ -1,7 +1,6 @@
 <template>
-  <!-- http://tholman.com/github-corners/  -->
   <a
-    href="https://github.com/alfg/opendrinks"
+    href="https://github.com/luantran24hdev/Boulevard-Gelato-Drinks"
     class="github-corner"
     aria-label="View source on GitHub"
   >

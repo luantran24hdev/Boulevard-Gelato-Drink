@@ -1,9 +1,8 @@
 import store from '../store';
 
 const ifNotAuthenticated = (to, from, next) => {
-  // 1. Router chỉ cho phép vào khi chưa đăng nhập (Login, Register)
   if (store.getters.isLogin === false) {
-    next(); // Cho phép vào
+    next();
   } else {
     next({
       name: 'home',
@@ -15,9 +14,8 @@ const ifNotAuthenticated = (to, from, next) => {
 };
 
 const ifAuthenticated = (to, from, next) => {
-  // 2. Router chỉ chó phép vào khi đã đăng nhập
   if (store.getters.isLogin === true) {
-    next(); // Cho phép vào
+    next();
   } else {
     next({
       name: 'login',

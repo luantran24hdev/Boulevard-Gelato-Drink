@@ -6,7 +6,7 @@
         <h1 class="logo">
           <router-link to="/">
             <img alt="Logo" src="./assets/logo.png" width="50" />
-            Bouleconstd Gelato {{ isRenderHeader }}
+            Bouleconstd Gelato
           </router-link>
         </h1>
         <!-- <theme-handler class="mt-3 ml-auto mr-4"></theme-handler> -->

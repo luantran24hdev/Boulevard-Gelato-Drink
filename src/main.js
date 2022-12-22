@@ -7,6 +7,7 @@ import BoostrapVue from 'bootstrap-vue';
 import VueSocialSharing from 'vue-social-sharing';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 import './registerServiceWorker';
 import 'core-js';
 
@@ -16,6 +17,7 @@ Vue.use(BoostrapVue);
 Vue.use(VueSocialSharing);
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app');

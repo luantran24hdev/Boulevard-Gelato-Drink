@@ -1,5 +1,5 @@
 Create
-Vue app
+Vue app 2023
 ```
 nvm install
 nvm use
